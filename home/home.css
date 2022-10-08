@@ -1,0 +1,85 @@
+
+ *{
+    margin: 0%;
+    padding: 0%;
+ }
+body{
+    background-color: #ffffff;
+}
+.imglogonav{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+.dishehad{
+    font-size: 16px;
+}
+.chickmenhead{
+    color: rgb(2, 4, 96);
+    font-family: Arial, Helvetica, sans-serif;
+    
+}
+.parades{
+    color: gray;
+    font-size: 17px;
+    width: 510px;
+    font-family: 'Times New Roman', Times, serif;
+}
+.nVLIST{
+    font-size: 18px;
+    font-family:'Times New Roman', Times, serif;
+    letter-spacing: 3px;
+    color: gray;
+    display: flex;
+    /* justify-content: space-around;
+     */
+     column-gap: 30px;
+
+      
+}
+
+
+.leftcontentdiv{
+    margin-top: 240px;
+    line-height: 35px;
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center; */
+    
+}
+.headdishes{
+    text-decoration: underline rgb(2, 4, 96);;
+    text-underline-offset: 0.5em;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.btnownorder{
+    background-color:  rgb(2, 4, 96);
+    color: #ffffff;
+    width: 200px;
+    padding: 5px;
+    border-radius: 3px;
+}
+.mynav{
+    color: gray;
+}
+.mynav:hover{
+    background-color: rgb(4, 249, 4);
+    color: white;
+}
+.newclass:hover{
+    color:white;
+}
+a{
+    color: gray;
+}
+
+
+.myownbutton{
+    display: none;
+}
+
+@media (max-width: 600px) {
+    .myownbutton{
+        display: block;
+    }
+  }
