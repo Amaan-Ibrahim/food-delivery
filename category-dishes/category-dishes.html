@@ -52,14 +52,14 @@
       </nav>
 
 
-        <div class="container mt-5"  style="display: flex; justify-content: space-around;">
+        <div class="container mt-5"  style="display: flex; justify-content: space-around;" id="maindivforallcategorybtns">
                 <button class="btn btn-primary" onclick="filteredData('biryani')">Biryani</button>
-                <button class="btn btn-primary" onclick="filteredData('pizza')">Pizza</button>
+                <!-- <button class="btn btn-primary" onclick="filteredData('pizza')">Pizza</button>
                 <button class="btn btn-primary" onclick="filteredData('chicken')">Chicken</button>
                 <button class="btn btn-primary" onclick="filteredData('burger')">Burger</button>
                 <button class="btn btn-primary" onclick="filteredData('bbq')">BBQ</button>
                 <button class="btn btn-primary" onclick="filteredData('sandwitch')">sandwitch</button>
-                <button class="btn btn-primary" onclick="allShowData()">ALL Dishes</button>
+                <button class="btn btn-primary" onclick="allShowData()">ALL Dishes</button> -->
 
 
 
@@ -116,7 +116,7 @@
           productName:"chicken fajita",
           productDescription:"Some quick example text to build on the card title and make up the bulk of the card's content.",
           productPrice:"1500",
-          category:"Pizza",
+          category:"pizza",
 
          
         },
@@ -237,6 +237,37 @@
 
          
         },
+
+        {productImage:"../images/chiekne1.jpg",
+          productName:"chicken shuwarma",
+          productDescription:"Some quick example text to build on the card title and make up the bulk of the card's content.",
+          productPrice:"1100",
+          category:"shuwarma",
+
+         
+        },
+
+
+        {productImage:"../images/chiekne1.jpg",
+          productName:"beef shuwarma",
+          productDescription:"Some quick example text to build on the card title and make up the bulk of the card's content.",
+          productPrice:"1100",
+          category:"shuwarma",
+
+         
+        },
+
+
+        {productImage:"../images/chiekne1.jpg",
+          productName:"french fries",
+          productDescription:"Some quick example text to build on the card title and make up the bulk of the card's content.",
+          productPrice:"1100",
+          category:"fries",
+
+         
+        },
+
+        
         
         
         ];
@@ -263,30 +294,64 @@
 
 
 
+      function myFilteredDataForCategory(){
+        const myBtnsCategory=[...new Set (dishesData.map((items)=>{
+            return `<button class="btn btn-primary" onclick="filteredDataForDishes('${items.category}')">${items.category}</button>`
+        })),'<button class="btn btn-primary" onclick="showAllData()">All Dishes</button>'].join("")
 
-       const filteredData=(myCategory)=>{
-      
-      
-        const myFilterdData=dishesData.filter((items)=>{
+
+        // let dup = [...new Set(myBtnsCategory)];
+
+          document.getElementById('maindivforallcategorybtns').innerHTML=myBtnsCategory
+      }
+      myFilteredDataForCategory()
+
+
+      const filteredDataForDishes=(myCategory)=>{
+           const filteredCategoryData=dishesData.filter((items)=>{
             return items.category===myCategory;
-        }).map((items)=>{
-            return    `<div class="card" style="width: 18rem; margin:10px">
-        <img src=${items.productImage} />
-        <div class="card-body">
-          <h5 class="card-title">${items.productName}</h5>
-          <p class="card-text">${items.productDescription}</p>
-            <h3>Rs ${items.productPrice}</h3>
-           <a href="../add-to-cart/add-to-cart.html" class="btn btn-primary">Add To Cart</a>
-        </div>
-      </div>` 
-        })
+           }).map((items)=>{
+            return        `<div class="card" style="width: 18rem; margin:10px">
+         <img src=${items.productImage} />
+     <div class="card-body">
+       <h5 class="card-title">${items.productName}</h5>
+       <p class="card-text">${items.productDescription}</p>
+         <h3>Rs ${items.productPrice}</h3>
+        <a href="../add-to-cart/add-to-cart.html" class="btn btn-primary">Add To Cart</a>
+     </div>
+    </div>` 
+           }).join("")
+        document.getElementById("maindishesdivforcategory").innerHTML=filteredCategoryData;
 
-        document.getElementById("maindishesdivforcategory").innerHTML=myFilterdData;
-       }
+      }
 
-       const allShowData=()=>{
+      const showAllData=()=>{
         displayMyDishesAllData()
-       }
+      }
+
+    //    const filteredData=(myCategory)=>{
+      
+      
+    //     const myFilterdData=dishesData.filter((items)=>{
+    //         return items.category===myCategory;
+    //     }).map((items)=>{
+    //         return    `<div class="card" style="width: 18rem; margin:10px">
+    //     <img src=${items.productImage} />
+    //     <div class="card-body">
+    //       <h5 class="card-title">${items.productName}</h5>
+    //       <p class="card-text">${items.productDescription}</p>
+    //         <h3>Rs ${items.productPrice}</h3>
+    //        <a href="../add-to-cart/add-to-cart.html" class="btn btn-primary">Add To Cart</a>
+    //     </div>
+    //   </div>` 
+    //     })
+
+    //     document.getElementById("maindishesdivforcategory").innerHTML=myFilterdData;
+    //    }
+
+    //    const allShowData=()=>{
+    //     displayMyDishesAllData()
+    //    }
 
 
    </script>
