@@ -53,13 +53,13 @@
 
 
         <div class="container mt-5"  style="display: flex; justify-content: space-around;">
-                <button class="btn btn-primary" onclick="filterdBiryaniData()">Biryani</button>
-                <button class="btn btn-primary" onclick="filteredPizzaData()">Pizza</button>
-                <button class="btn btn-primary" onclick="filterdChickenData()">Chicken</button>
-                <button class="btn btn-primary" onclick="filterdBurgerData()">Burger</button>
-                <button class="btn btn-primary" onclick="filteredBbqData()">BBQ</button>
-                <button class="btn btn-primary" onclick="filteredSandwicthesData()">sandwitch</button>
-                <button class="btn btn-primary" onclick="showAllData()">ALL Dishes</button>
+                <button class="btn btn-primary" onclick="filteredData('biryani')">Biryani</button>
+                <button class="btn btn-primary" onclick="filteredData('pizza')">Pizza</button>
+                <button class="btn btn-primary" onclick="filteredData('chicken')">Chicken</button>
+                <button class="btn btn-primary" onclick="filteredData('burger')">Burger</button>
+                <button class="btn btn-primary" onclick="filteredData('bbq')">BBQ</button>
+                <button class="btn btn-primary" onclick="filteredData('sandwitch')">sandwitch</button>
+                <button class="btn btn-primary" onclick="allShowData()">ALL Dishes</button>
 
 
 
@@ -241,7 +241,8 @@
         
         ];
 
-          const displayDishesData=dishesData.map((items)=>{
+            function displayMyDishesAllData(){
+                const displayDishesData=dishesData.map((items)=>{
             return    `    <div class="card" style="width: 18rem; margin:10px">
         <img src=${items.productImage} />
         <div class="card-body">
@@ -256,34 +257,18 @@
 
          
        document.getElementById("maindishesdivforcategory").innerHTML=displayDishesData;
+            }
+      displayMyDishesAllData()
 
 
 
-       const filterdBiryaniData=()=>{
- 
-         
 
-      const myNewData= dishesData.filter((items)=>{
-            return items.category==='biryani';
-          }).map((items)=>{
-            return    `<div class="card" style="width: 18rem; margin:10px">
-        <img src=${items.productImage} />
-        <div class="card-body">
-          <h5 class="card-title">${items.productName}</h5>
-          <p class="card-text">${items.productDescription}</p>
-            <h3>Rs ${items.productPrice}</h3>
-           <a href="../add-to-cart/add-to-cart.html" class="btn btn-primary">Add To Cart</a>
-        </div>
-      </div>` 
-          })
-        
-          document.getElementById("maindishesdivforcategory").innerHTML=myNewData;
 
-    }
-
-   const filteredPizzaData=()=>{
-        const myPizzaData=dishesData.filter((items)=>{
-            return items.category==='pizza';
+       const filteredData=(myCategory)=>{
+      
+      
+        const myFilterdData=dishesData.filter((items)=>{
+            return items.category===myCategory;
         }).map((items)=>{
             return    `<div class="card" style="width: 18rem; margin:10px">
         <img src=${items.productImage} />
@@ -296,110 +281,12 @@
       </div>` 
         })
 
-        document.getElementById("maindishesdivforcategory").innerHTML=myPizzaData;
+        document.getElementById("maindishesdivforcategory").innerHTML=myFilterdData;
+       }
 
-   }
-
-
-   const filterdChickenData=()=>{
-        const myChickenData=dishesData.filter((items)=>{
-            return items.category==='chicken';
-        }).map((items)=>{
-            return    `<div class="card" style="width: 18rem; margin:10px">
-        <img src=${items.productImage} />
-        <div class="card-body">
-          <h5 class="card-title">${items.productName}</h5>
-          <p class="card-text">${items.productDescription}</p>
-            <h3>Rs ${items.productPrice}</h3>
-           <a href="../add-to-cart/add-to-cart.html" class="btn btn-primary">Add To Cart</a>
-        </div>
-      </div>` 
-        })
-
-        document.getElementById("maindishesdivforcategory").innerHTML=myChickenData;
-
-   }
-
-
-   const filterdBurgerData=()=>{
-        const myburgerData=dishesData.filter((items)=>{
-            return items.category==='burger';
-        }).map((items)=>{
-            return    `<div class="card" style="width: 18rem; margin:10px">
-        <img src=${items.productImage} />
-        <div class="card-body">
-          <h5 class="card-title">${items.productName}</h5>
-          <p class="card-text">${items.productDescription}</p>
-            <h3>Rs ${items.productPrice}</h3>
-           <a href="../add-to-cart/add-to-cart.html" class="btn btn-primary">Add To Cart</a>
-        </div>
-      </div>` 
-        })
-
-        document.getElementById("maindishesdivforcategory").innerHTML=myburgerData;
-
-   }
-
-
-   const filteredBbqData=()=>{
-        const myBbqData=dishesData.filter((items)=>{
-            return items.category==='bbq';
-        }).map((items)=>{
-            return    `<div class="card" style="width: 18rem; margin:10px">
-        <img src=${items.productImage} />
-        <div class="card-body">
-          <h5 class="card-title">${items.productName}</h5>
-          <p class="card-text">${items.productDescription}</p>
-            <h3>Rs ${items.productPrice}</h3>
-           <a href="../add-to-cart/add-to-cart.html" class="btn btn-primary">Add To Cart</a>
-        </div>
-      </div>` 
-        })
-
-        document.getElementById("maindishesdivforcategory").innerHTML=myBbqData;
-
-   }
-
-
-
-   
-   const filteredSandwicthesData=()=>{
-        const mySandwicthesData=dishesData.filter((items)=>{
-            return items.category==='sandwitch';
-        }).map((items)=>{
-            return    `<div class="card" style="width: 18rem; margin:10px">
-        <img src=${items.productImage} />
-        <div class="card-body">
-          <h5 class="card-title">${items.productName}</h5>
-          <p class="card-text">${items.productDescription}</p>
-            <h3>Rs ${items.productPrice}</h3>
-           <a href="../add-to-cart/add-to-cart.html" class="btn btn-primary">Add To Cart</a>
-        </div>
-      </div>` 
-        })
-
-        document.getElementById("maindishesdivforcategory").innerHTML=mySandwicthesData;
-
-   }
-
-
- 
-   const showAllData=()=>{
-        const myAllData=dishesData.map((items)=>{
-            return    `<div class="card" style="width: 18rem; margin:10px">
-        <img src=${items.productImage} />
-        <div class="card-body">
-          <h5 class="card-title">${items.productName}</h5>
-          <p class="card-text">${items.productDescription}</p>
-            <h3>Rs ${items.productPrice}</h3>
-           <a href="../add-to-cart/add-to-cart.html" class="btn btn-primary">Add To Cart</a>
-        </div>
-      </div>` 
-        })
-
-        document.getElementById("maindishesdivforcategory").innerHTML=myAllData;
-
-   }
+       const allShowData=()=>{
+        displayMyDishesAllData()
+       }
 
 
    </script>
