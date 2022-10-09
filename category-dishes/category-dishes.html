@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -14,6 +13,7 @@
     <link rel="stylesheet" href="../home/home.css" />
 </head>
 <body>
+
 
     <nav class="navbar navbar-expand-lg" style="background-color: #ffffff; padding-left: 10px; padding-right: 30px; box-shadow: 2px 2px 10px gray;" >
         <div class="container-fluid">
@@ -50,68 +50,46 @@
           </div>
         </div>
       </nav>
-      
-      <!-- our category wise dishes -->
-      <div class="container mt-5">
-        <h2 class="headdishes text-center" > Biryani Dishes</h2>
 
-        <div class="row mt-5" style="display: flex; justify-content: space-around;" id="maindishesdivbiryani">
+
+        <div class="container mt-5"  style="display: flex; justify-content: space-around;">
+                <button class="btn btn-primary" onclick="filterdBiryaniData()">Biryani</button>
+                <button class="btn btn-primary" onclick="filteredPizzaData()">Pizza</button>
+                <button class="btn btn-primary" onclick="filterdChickenData()">Chicken</button>
+                <button class="btn btn-primary" onclick="filterdBurgerData()">Burger</button>
+                <button class="btn btn-primary" onclick="filteredBbqData()">BBQ</button>
+                <button class="btn btn-primary" onclick="filteredSandwicthesData()">sandwitch</button>
+                <button class="btn btn-primary" onclick="showAllData()">ALL Dishes</button>
+
+
+
+
+
+
+            </div>
+        </div>
+
+
+        <!-- dishes all -->
+        <div class="container mt-5">
+            <h2 class="headdishes text-center" > Our Healthy Dishes</h2>
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+
+            <div class="row" style="display: flex; justify-content: space-around;" id="maindishesdivforcategory">
 
 
      
 
           
-        </div>
-        </div>
-
-
-
-        <div class="container mt-5">
-            <h2 class="headdishes text-center" >Our Pizzas</h2>
-    
-            <div class="row mt-5" style="display: flex; justify-content: space-around;" id="maindishesdivpizza">
-    
-    
-         
-    
-              
             </div>
-            </div>
+           </div>
 
-
-            <div class="container mt-5">
-                <h2 class="headdishes text-center" >Our BBQ</h2>
         
-                <div class="row mt-5" style="display: flex; justify-content: space-around;" id="maindishesdivbbq">
-        
-        
-             
-        
-                  
-                </div>
-                </div>
-
-                <h2 class="headdishes text-center" >Our Chicken</h2>
-        
-                <div class="row mt-5" style="display: flex; justify-content: space-around;" id="maindishesdivchicken">
-        
-        
-             
-        
-                  
-                </div>
-                </div>
-
-                <h2 class="headdishes text-center" >Our Burger</h2>
-
-                <div class="row mt-5" style="display: flex; justify-content: space-around;" id="maindishesdivburger">
-        
-        
-             
-        
-                  
-                </div>
-                </div>
 </body>
 
 <script>
@@ -137,7 +115,7 @@
         {productImage:"../images/chciken1.jpg",
           productName:"chicken fajita",
           productDescription:"Some quick example text to build on the card title and make up the bulk of the card's content.",
-          productPrice:"300",
+          productPrice:"1500",
           category:"Pizza",
 
          
@@ -263,9 +241,7 @@
         
         ];
 
-          const displayDishesData=dishesData.filter((values)=>{
-            return values.category==='biryani'
-          }).map((items)=>{
+          const displayDishesData=dishesData.map((items)=>{
             return    `    <div class="card" style="width: 18rem; margin:10px">
         <img src=${items.productImage} />
         <div class="card-body">
@@ -279,14 +255,18 @@
           console.log(displayDishesData)
 
          
-       document.getElementById("maindishesdivbiryani").innerHTML=displayDishesData
+       document.getElementById("maindishesdivforcategory").innerHTML=displayDishesData;
 
 
-       
-       const displayDishesDataBurger=dishesData.filter((values)=>{
-            return values.category==='burger'
+
+       const filterdBiryaniData=()=>{
+ 
+         
+
+      const myNewData= dishesData.filter((items)=>{
+            return items.category==='biryani';
           }).map((items)=>{
-            return    `    <div class="card" style="width: 18rem; margin:10px">
+            return    `<div class="card" style="width: 18rem; margin:10px">
         <img src=${items.productImage} />
         <div class="card-body">
           <h5 class="card-title">${items.productName}</h5>
@@ -294,21 +274,18 @@
             <h3>Rs ${items.productPrice}</h3>
            <a href="../add-to-cart/add-to-cart.html" class="btn btn-primary">Add To Cart</a>
         </div>
-      </div>`
-          }).join("")
-          console.log(displayDishesData)
+      </div>` 
+          })
+        
+          document.getElementById("maindishesdivforcategory").innerHTML=myNewData;
 
-         
-       document.getElementById("maindishesdivburger").innerHTML=displayDishesDataBurger
+    }
 
-
-
-    //    pizzza dipslays
-
-    const displayDishesDataPizza=dishesData.filter((values)=>{
-            return values.category==='pizza'
-          }).map((items)=>{
-            return    `    <div class="card" style="width: 18rem; margin:10px">
+   const filteredPizzaData=()=>{
+        const myPizzaData=dishesData.filter((items)=>{
+            return items.category==='pizza';
+        }).map((items)=>{
+            return    `<div class="card" style="width: 18rem; margin:10px">
         <img src=${items.productImage} />
         <div class="card-body">
           <h5 class="card-title">${items.productName}</h5>
@@ -316,18 +293,19 @@
             <h3>Rs ${items.productPrice}</h3>
            <a href="../add-to-cart/add-to-cart.html" class="btn btn-primary">Add To Cart</a>
         </div>
-      </div>`
-          }).join("")
-          console.log(displayDishesData)
+      </div>` 
+        })
 
-         
-       document.getElementById("maindishesdivpizza").innerHTML=displayDishesDataPizza
+        document.getElementById("maindishesdivforcategory").innerHTML=myPizzaData;
+
+   }
 
 
-       const displayDishesDataBBq=dishesData.filter((values)=>{
-            return values.category==='bbq'
-          }).map((items)=>{
-            return    `    <div class="card" style="width: 18rem; margin:10px">
+   const filterdChickenData=()=>{
+        const myChickenData=dishesData.filter((items)=>{
+            return items.category==='chicken';
+        }).map((items)=>{
+            return    `<div class="card" style="width: 18rem; margin:10px">
         <img src=${items.productImage} />
         <div class="card-body">
           <h5 class="card-title">${items.productName}</h5>
@@ -335,20 +313,19 @@
             <h3>Rs ${items.productPrice}</h3>
            <a href="../add-to-cart/add-to-cart.html" class="btn btn-primary">Add To Cart</a>
         </div>
-      </div>`
-          }).join("")
-          console.log(displayDishesData)
+      </div>` 
+        })
 
-         
-       document.getElementById("maindishesdivbbq").innerHTML=displayDishesDataBBq
+        document.getElementById("maindishesdivforcategory").innerHTML=myChickenData;
+
+   }
 
 
-       
-
-       const displayDishesDataChicken=dishesData.filter((values)=>{
-            return values.category==='chicken'
-          }).map((items)=>{
-            return    `    <div class="card" style="width: 18rem; margin:10px">
+   const filterdBurgerData=()=>{
+        const myburgerData=dishesData.filter((items)=>{
+            return items.category==='burger';
+        }).map((items)=>{
+            return    `<div class="card" style="width: 18rem; margin:10px">
         <img src=${items.productImage} />
         <div class="card-body">
           <h5 class="card-title">${items.productName}</h5>
@@ -356,18 +333,77 @@
             <h3>Rs ${items.productPrice}</h3>
            <a href="../add-to-cart/add-to-cart.html" class="btn btn-primary">Add To Cart</a>
         </div>
-      </div>`
-          }).join("")
-          console.log(displayDishesData)
+      </div>` 
+        })
 
-         
-       document.getElementById("maindishesdivchicken").innerHTML=displayDishesDataChicken
+        document.getElementById("maindishesdivforcategory").innerHTML=myburgerData;
 
+   }
+
+
+   const filteredBbqData=()=>{
+        const myBbqData=dishesData.filter((items)=>{
+            return items.category==='bbq';
+        }).map((items)=>{
+            return    `<div class="card" style="width: 18rem; margin:10px">
+        <img src=${items.productImage} />
+        <div class="card-body">
+          <h5 class="card-title">${items.productName}</h5>
+          <p class="card-text">${items.productDescription}</p>
+            <h3>Rs ${items.productPrice}</h3>
+           <a href="../add-to-cart/add-to-cart.html" class="btn btn-primary">Add To Cart</a>
+        </div>
+      </div>` 
+        })
+
+        document.getElementById("maindishesdivforcategory").innerHTML=myBbqData;
+
+   }
+
+
+
+   
+   const filteredSandwicthesData=()=>{
+        const mySandwicthesData=dishesData.filter((items)=>{
+            return items.category==='sandwitch';
+        }).map((items)=>{
+            return    `<div class="card" style="width: 18rem; margin:10px">
+        <img src=${items.productImage} />
+        <div class="card-body">
+          <h5 class="card-title">${items.productName}</h5>
+          <p class="card-text">${items.productDescription}</p>
+            <h3>Rs ${items.productPrice}</h3>
+           <a href="../add-to-cart/add-to-cart.html" class="btn btn-primary">Add To Cart</a>
+        </div>
+      </div>` 
+        })
+
+        document.getElementById("maindishesdivforcategory").innerHTML=mySandwicthesData;
+
+   }
+
+
+ 
+   const showAllData=()=>{
+        const myAllData=dishesData.map((items)=>{
+            return    `<div class="card" style="width: 18rem; margin:10px">
+        <img src=${items.productImage} />
+        <div class="card-body">
+          <h5 class="card-title">${items.productName}</h5>
+          <p class="card-text">${items.productDescription}</p>
+            <h3>Rs ${items.productPrice}</h3>
+           <a href="../add-to-cart/add-to-cart.html" class="btn btn-primary">Add To Cart</a>
+        </div>
+      </div>` 
+        })
+
+        document.getElementById("maindishesdivforcategory").innerHTML=myAllData;
+
+   }
 
 
    </script>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
-<!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>  -->
 </html>
