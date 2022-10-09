@@ -1,0 +1,13 @@
+@media (max-width: 600px) {
+    .maindivforaddlcategory{
+        display:flex;
+        flex-direction: column;
+        column-gap: 20px;
+        /* justify-content: space-around;
+        padding: 10px; */
+  /* background-color: aquamarine; */
+    }
+    .mybtnsalk{
+        margin: 10px;
+    }
+  }
